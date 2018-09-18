@@ -11,16 +11,17 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      masterPostList: {}
+      masterFeedList: {}
     };
   }
 
   render() {
-    return <div className="App">
+    return (
+      <div className="App">
         <NewPostForm />
         <Feed feed={this.props.masterFeedList} />
-      </div>;
-  }
+      </div>
+    )}
 }
 
 App.propTypes = {

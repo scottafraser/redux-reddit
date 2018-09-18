@@ -4,47 +4,41 @@ import Badge from "@material-ui/core/Badge";
 import { withStyles } from "@material-ui/core/styles";
 import classnames from "classnames";
 import red from "@material-ui/core/colors/red";
-
 import ThumbDown from "@material-ui/icons/ThumbDown";
 import IconButton from "@material-ui/core/IconButton";
 import FavoriteIcon from "@material-ui/icons/Favorite";
-
-
-
-
+import { connect } from "react-redux";
 
 function Post(props) {
 
 
     function handleLike() {
-        console.log('like!')
+        console.log(props.likes  + "we got handle like");
+        const { dispatch } = props;
+        const action = {
+            type: 'LIKE_POST',
+            postId: props.postId
+        }
+        dispatch(action)
+        console.log(action)
     }
 
     function handleDislike() {
         console.log('unlike')
     }
 
-    let color = "inheret";
-    let poopColor = "inheret"
-    // if (this.state.liked) {
-    //     color = "secondary";
-    // }
-    // if (this.state.disliked) {
-    //     poopColor = "secondary";
-    // }
-
     const postInformation =
         <div>
             <h3>{props.name} - {props.time}</h3>
             <h4>{props.content}</h4>
             <IconButton aria-label="Add to favorites">
-                <Badge badgeContent={1} color="primary">
-                    <FavoriteIcon color={color} onClick={handleLike} />
+                <Badge badgeContent={props.likes} color="primary">
+                    <FavoriteIcon onClick={handleLike} />
                 </Badge>
             </IconButton>
             <IconButton>
-                <Badge badgeContent={1} color="primary">
-                    <ThumbDown color={poopColor} onClick={handleDislike} />
+                <Badge badgeContent={props.dislikes} color="primary">
+                    <ThumbDown onClick={handleDislike} />
                 </Badge>
             </IconButton>
             <hr />
@@ -61,10 +55,12 @@ Post.propTypes = {
     name: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
     time: PropTypes.string,
-    ticketId: PropTypes.string.isRequired
+    postId: PropTypes.string.isRequired,
+    likes: PropTypes.number,
+    dislikes: PropTypes.number
 };
 
-export default Post;
+export default connect()(Post);
 
     // <IconButton aria-label="Add to favorites">
     //     <Badge badgeContent={this.state.likeCount} color="primary" classes={{ badge: classes.badge }}>

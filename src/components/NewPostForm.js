@@ -15,7 +15,9 @@ const NewPostForm = (props) => {
             id: v4(),
             name: _name.value,
             content: _content.value,
-            time: (new Date()).getMonth() + 1 + "/" + (new Date()).getDate() + "/" + (new Date()).getFullYear()
+            time: (new Date()).getMonth() + 1 + "/" + (new Date()).getDate() + "/" + (new Date()).getFullYear(),
+            likes: 0,
+            dislikes: 0
         };
         dispatch(action)
         _name.value = '';

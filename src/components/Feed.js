@@ -3,6 +3,7 @@ import Post from "./Post";
 import PropTypes from "prop-types";
 
 function Feed(props) {
+  console.log(props)
   return (
     <div>
       <hr />
@@ -15,6 +16,8 @@ function Feed(props) {
             time={post.time}
             key={postId}
             postId={postId}
+            likes={post.likes}
+            dislikes={post.dislikes}
           />
         );
       })}
