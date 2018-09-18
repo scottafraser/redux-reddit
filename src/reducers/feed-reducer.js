@@ -13,17 +13,17 @@ export default (state = {}, action) => {
         }
       });
       return newState;
-    // case "LIKE_POST":
-    //   console.log("sdfsdf")
-    //   let newLikeNumber = state[action.postId].likes + 1;
-    //   let newPost = Object.assign({}, state[action.postId], {
-    //     likes: newLikeNumber
-    //   })
-    //   let newPostByIdStateSlice = Object.assign({}, state, {
-    //     [action.postId]: newPost
-    //   });
-    //   console.log(newPostByIdStateSlice);
-    //   return newPostByIdStateSlice;
+    case "LIKE_POST":
+      console.log("sdfsdf")
+      let newLikeNumber = state[action.postId].likes + 1;
+      let newPost = Object.assign({}, state[action.postId], {
+        likes: newLikeNumber
+      })
+      let newPostByIdStateSlice = Object.assign({}, state, {
+        [action.postId]: newPost
+      });
+      console.log(newPostByIdStateSlice);
+      return newPostByIdStateSlice;
     default:
       return state;
   }

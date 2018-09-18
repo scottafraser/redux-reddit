@@ -13,14 +13,14 @@ function Post(props) {
 
 
     function handleLike() {
-        console.log(props.likes  + "we got handle like");
+        console.log(props.likes);
         const { dispatch } = props;
         const action = {
             type: 'LIKE_POST',
             postId: props.postId
         }
         dispatch(action)
-        console.log(action)
+        console.log('like!')
     }
 
     function handleDislike() {

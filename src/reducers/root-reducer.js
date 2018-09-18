@@ -3,8 +3,8 @@ import likeReducer from './like-reducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    theFeedReducer: feedReducer,
-    theLikeReducer: likeReducer
+    masterFeedList: feedReducer,
+    likes: likeReducer
 });
 
 export default rootReducer;
