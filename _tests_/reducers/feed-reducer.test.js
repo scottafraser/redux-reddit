@@ -1,4 +1,4 @@
-import feedListReducer from "./../../src/reducers/feed-list-reducer";
+import feedListReducer from "../../src/reducers/feed-reducer";
 
 describe("feedListReducer", () => {
   let action;

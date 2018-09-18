@@ -1,21 +1,36 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NewPostForm from './NewPostForm';
+import Feed from './Feed';
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      masterPostList: {}
+    };
+  }
+
   render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+    return <div className="App">
+        <NewPostForm />
+        <Feed feed={this.props.masterFeedList} />
+      </div>;
   }
 }
 
-export default App;
+App.propTypes = {
+  masterFeedList: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    masterFeedList: state
+  };
+};
+
+export default connect(mapStateToProps)(App);
