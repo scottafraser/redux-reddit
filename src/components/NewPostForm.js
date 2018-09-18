@@ -6,7 +6,6 @@ import { v4 } from 'uuid'
 const NewPostForm = (props) => {
     let _name = null;
     let _content = null;
-    let _time = null;
 
     function handleNewPost(event) {
         const { dispatch } = props;
@@ -16,7 +15,7 @@ const NewPostForm = (props) => {
             id: v4(),
             name: _name.value,
             content: _content.value,
-            time: Date.now(),
+            time: (new Date()).getMonth() + 1 + "/" + (new Date()).getDate() + "/" + (new Date()).getFullYear()
         };
         dispatch(action)
         _name.value = '';
